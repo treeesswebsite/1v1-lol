@@ -29,7 +29,7 @@ function retrieveIdToken(successCallback, errorCallback) {
 function anonymousLogin(successCallback, errorCallback) {
 	var resultObj = {
 		token: "",
-		displayName: "guest"
+		displayName: "Logged-out"
 	};
 
 	if (successCallback !== undefined) {
@@ -83,7 +83,7 @@ function firebaseLogin(providerName, successCallback, errorCallback) {
 					// Sign in to provider.
 					tempProviderName = methods[0].trim();
 					setModalContent("generalModalContent",
-						"<div id =\"continueWindow\"><span class=\"close\" id=\"closeButton\" onclick=\"hideModal('generalModal')\">&times;</span><p>Please press the button to login: </p><button onclick=\"continueLogin()\">Continue Login</button></div>");
+						"<div id =\"continueWindow\"><span class=\"close\" id=\"closeButton\" onclick=\"hideModal('generalModal')\">&times;</span><p>Please press the button to log into your account: </p><button onclick=\"continueLogin()\">Continue Login</button></div>");
 					showModal("generalModal");
 				});
 			}
@@ -98,7 +98,7 @@ function firebaseLogout() {
 
 function getCurrentUserDisplayName() {
 	var user = firebase.auth().currentUser;
-	var displayName = "";
+	var displayName = "Anonymous";
 	if (user) {
 		displayName = user.displayName;
 	}
